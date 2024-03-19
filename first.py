@@ -5,15 +5,43 @@
 # Функция должна заменять первые 12 цифр в строке card_number на символ * и возвращать полученный результат.
 # Если между цифрами в номере имелись символы пробела, их следует удалить.
 
-card: str = '905 678123 45612 56'
+# card: str = '905 678123 45612 56'
+#
+#
+# def hide_card(number) -> str:
+#     rez: str = ''
+#     for elem in number:
+#         if elem != ' ':
+#             rez += elem
+#     shifr_rez: str = ('*' * 12) + rez[12:]
+#     return shifr_rez
+#
+# print(hide_card(card))
+# ____________________________________________________________
+# Реализуйте функцию same_parity(), которая принимает один аргумент:#
+# numbers — список целых чисел
+# Функция должна возвращать новый список, элементами которого являются числа из списка numbers, имеющие
+# ту же четность, что и первый элемент этого списка.
+# # Примечание 1. Числа в возвращаемом функцией списке должны располагаться в своем исходном порядке.
+# # Примечание 2. В тестирующую систему сдайте программу, содержащую только необходимую функцию same_parity(), но не код, вызывающий ее.
+
+def same_parity(number) -> list:
+    rez: list = []
+
+    if len(number) > 0:
+        if int(number[0]) % 2 == 0:
+            for elem in number:
+
+                if int(elem) % 2 == 0:
+                    rez.append(elem)
+        else:
+            for elem in number:
+                if int(elem) % 2 == 1:
+                    rez.append(elem)
+    return rez
 
 
-def hide_card(number) -> str:
-    rez: str = ''
-    for elem in number:
-        if elem != ' ':
-            rez += elem
-    shifr_rez: str = ('*' * 12) + rez[12:]
-    return shifr_rez
+print(same_parity([]))
+print(same_parity([6, 0, 67, -7, 10, -20]))
+print(same_parity([-7, 0, 67, -9, 70, -29, 90]))
 
-print(hide_card(card))
