@@ -44,7 +44,7 @@
 # print(same_parity([]))
 # print(same_parity([6, 0, 67, -7, 10, -20]))
 # print(same_parity([-7, 0, 67, -9, 70, -29, 90]))
-
+#----------------------------------------------------------------------------------------------------------------
 
 #Будем считать, что PIN-код является корректным, если он удовлетворяет следующим условиям:
 
@@ -67,7 +67,7 @@
 # print(is_valid('89abc1'))
 # print(is_valid('900876'))
 # print(is_valid('49 83'))
-
+#----------------------------------------------------------------------------------------------------------------
 
 #Реализуйте функцию print_given(), которая принимает произвольное количество позиционных и именованных аргументов
 # и выводит все переданные аргументы, указывая тип каждого. Пары аргумент-тип должны выводиться каждая
@@ -78,14 +78,43 @@
 # для именованных аргументов:
 # <имя переменной> <значение аргумента> <тип аргумента>
 
-def print_given(*args, **kwargs):
+# def print_given(*args, **kwargs):
+#
+#     for i in args:
+#         print(i, type(i))
+#     for key, value in sorted(kwargs.items()):
+#         print(key, value, type(value))
+#
+# print_given(1, [1, 2, 3], 'three', two=2)
+# print_given('apple', 'cherry', 'watermelon')
+# print_given(b=2, d=4, c=3, a=1)
+# print_given()
 
+#Реализуйте функцию convert(), которая принимает один аргумент:
+#string — произвольная строка
+#Функция должна возвращать строку string:
+#полностью в нижнем регистре, если букв в нижнем регистре в этой строке больше
+#полностью в верхнем регистре, если букв в верхнем регистре в этой строке больше
+#полностью в нижнем регистре, если количество букв в верхнем и нижнем регистрах в этой строке совпадает
+
+#----------------------------------------------------------------------------------------------------------------
+def convert(args) -> str:
+    small = 0
+    big = 0
     for i in args:
-        print(i, type(i))
-    for key, value in sorted(kwargs.items()):
-        print(key, value, type(value))
+        if i.isalpha():
+            if i.islower():
+                small +=1
+            else:
+                big +=1
+    if small > big:
+        return args.lower()
+    elif small < big:
+        return  args.upper()
+    else:
+        return args.lower()
 
-print_given(1, [1, 2, 3], 'three', two=2)
-print_given('apple', 'cherry', 'watermelon')
-print_given(b=2, d=4, c=3, a=1)
-print_given()
+
+print(convert('BEEgeek'))
+print(convert('pyTHON'))
+print(convert('pi31415!'))
