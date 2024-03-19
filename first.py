@@ -56,14 +56,36 @@
 # Функция должна возвращать значение True, если строка string представляет собой корректный PIN-код,
 # или False в противном случае.
 
-def is_valid(arg) -> bool:
-    if arg.isdigit() and (len(arg) == 4 or len(arg) == 5 or len(arg) == 6):
-        return True
-    else:
-        return False
+# def is_valid(arg) -> bool:
+#     if arg.isdigit() and (len(arg) == 4 or len(arg) == 5 or len(arg) == 6):
+#         return True
+#     else:
+#         return False
+#
+# print(is_valid('4367'))
+# print(is_valid('92134'))
+# print(is_valid('89abc1'))
+# print(is_valid('900876'))
+# print(is_valid('49 83'))
 
-print(is_valid('4367'))
-print(is_valid('92134'))
-print(is_valid('89abc1'))
-print(is_valid('900876'))
-print(is_valid('49 83'))
+
+#Реализуйте функцию print_given(), которая принимает произвольное количество позиционных и именованных аргументов
+# и выводит все переданные аргументы, указывая тип каждого. Пары аргумент-тип должны выводиться каждая
+# на отдельной строке, в следующем формате:
+
+# для позиционных аргументов:
+# <значение аргумента> <тип аргумента>
+# для именованных аргументов:
+# <имя переменной> <значение аргумента> <тип аргумента>
+
+def print_given(*args, **kwargs):
+
+    for i in args:
+        print(i, type(i))
+    for key, value in sorted(kwargs.items()):
+        print(key, value, type(value))
+
+print_given(1, [1, 2, 3], 'three', two=2)
+print_given('apple', 'cherry', 'watermelon')
+print_given(b=2, d=4, c=3, a=1)
+print_given()
