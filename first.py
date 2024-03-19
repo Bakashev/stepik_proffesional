@@ -25,23 +25,45 @@
 # # Примечание 1. Числа в возвращаемом функцией списке должны располагаться в своем исходном порядке.
 # # Примечание 2. В тестирующую систему сдайте программу, содержащую только необходимую функцию same_parity(), но не код, вызывающий ее.
 
-def same_parity(number) -> list:
-    rez: list = []
+# def same_parity(number) -> list:
+#     rez: list = []
+#
+#     if len(number) > 0:
+#         if int(number[0]) % 2 == 0:
+#             for elem in number:
+#
+#                 if int(elem) % 2 == 0:
+#                     rez.append(elem)
+#         else:
+#             for elem in number:
+#                 if int(elem) % 2 == 1:
+#                     rez.append(elem)
+#     return rez
+#
+#
+# print(same_parity([]))
+# print(same_parity([6, 0, 67, -7, 10, -20]))
+# print(same_parity([-7, 0, 67, -9, 70, -29, 90]))
 
-    if len(number) > 0:
-        if int(number[0]) % 2 == 0:
-            for elem in number:
 
-                if int(elem) % 2 == 0:
-                    rez.append(elem)
-        else:
-            for elem in number:
-                if int(elem) % 2 == 1:
-                    rez.append(elem)
-    return rez
+#Будем считать, что PIN-код является корректным, если он удовлетворяет следующим условиям:
 
+# состоит из 4, 5 или 6 символов состоит только из цифр (0−90−9)
+# не содержит пробелов
+# Реализуйте функцию is_valid(), которая принимает один аргумент:
+#
+# string — произвольная строка
+# Функция должна возвращать значение True, если строка string представляет собой корректный PIN-код,
+# или False в противном случае.
 
-print(same_parity([]))
-print(same_parity([6, 0, 67, -7, 10, -20]))
-print(same_parity([-7, 0, 67, -9, 70, -29, 90]))
+def is_valid(arg) -> bool:
+    if arg.isdigit() and (len(arg) == 4 or len(arg) == 5 or len(arg) == 6):
+        return True
+    else:
+        return False
 
+print(is_valid('4367'))
+print(is_valid('92134'))
+print(is_valid('89abc1'))
+print(is_valid('900876'))
+print(is_valid('49 83'))
