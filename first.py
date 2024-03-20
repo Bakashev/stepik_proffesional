@@ -129,21 +129,56 @@
 #
 # word — слово в нижнем регистре
 # words — список слов в нижнем регистре
-def filter_anagrams(*args):
-    res: list = []
-    word: str = sorted(args[0])
+# def filter_anagrams(*args):
+#     res: list = []
+#     word: str = sorted(args[0])
+#
+#     word_list: list = args[1]
+#     for elem in args[1]:
+#         if sorted(elem) == word:
+#             res.append(elem)
+#     return res
+#
+# word = 'abba'
+# anagrams = ['aabb', 'abcd', 'bbaa', 'dada']
+#
+# print(filter_anagrams(word, anagrams))
+#
+# print(filter_anagrams('отсечка', ['сеточка', 'стоечка', 'тесачок', 'чесотка']))
+#
+# print(filter_anagrams('стекло', []))
 
-    word_list: list = args[1]
-    for elem in args[1]:
-        if sorted(elem) == word:
-            res.append(elem)
+#----------------------------------------------------------------------------------------------------------------
+# В различных социальных сетях существуют системы лайков, которые в зависимости от количества людей, оценивших запись,
+# показывают соответствующую информацию.
+#
+# Реализуйте функцию likes(), которая принимает один аргумент:
+#
+# names — список имён
+# Функция должна возвращать строку в соответствии с примерами ниже, содержание которой зависит от
+# количества имён в списке names.
+
+def likes(names):
+    res = ''
+    if len(names) == 0:
+        res = 'Никто не оценил данную запись'
+    if 0 < len(names) < 4:
+        if len(names) == 1:
+            res = f'{names[0]} оценил(а) данную запись'
+        elif len(names) == 2:
+            res = (f'{names[0]} и {names[1]} оценили данную запись')
+        else:
+            res =f'{names[0]}, {names[1]} и {names[2]} оценили данную запись'
+    if len(names) > 3:
+        res = f'{names[0]}, {names[1]} и {len(names[2:])} других оценили данную запись'
     return res
 
-word = 'abba'
-anagrams = ['aabb', 'abcd', 'bbaa', 'dada']
-
-print(filter_anagrams(word, anagrams))
-
-print(filter_anagrams('отсечка', ['сеточка', 'стоечка', 'тесачок', 'чесотка']))
-
-print(filter_anagrams('стекло', []))
+print(likes([]))
+print(likes(['Тимур']))
+print(likes(['Тимур', 'Артур']))
+print(likes(['Тимур', 'Артур', 'Руслан']))
+print(likes(['Тимур', 'Артур', 'Руслан', 'Анри']))
+print(likes(['Тимур', 'Артур', 'Руслан', 'Анри', 'Дима']))
+print(likes(['Тимур', 'Артур', 'Руслан', 'Анри', 'Дима', 'Рома', 'Гвидо', 'Марк']))
+print(likes(['Дима', 'Алиса']))
+print(likes(['Эндрю', 'Тоби', 'Том']))
