@@ -98,23 +98,52 @@
 #полностью в нижнем регистре, если количество букв в верхнем и нижнем регистрах в этой строке совпадает
 
 #----------------------------------------------------------------------------------------------------------------
-def convert(args) -> str:
-    small = 0
-    big = 0
-    for i in args:
-        if i.isalpha():
-            if i.islower():
-                small +=1
-            else:
-                big +=1
-    if small > big:
-        return args.lower()
-    elif small < big:
-        return  args.upper()
-    else:
-        return args.lower()
+# def convert(args) -> str:
+#     small = 0
+#     big = 0
+#     for i in args:
+#         if i.isalpha():
+#             if i.islower():
+#                 small +=1
+#             else:
+#                 big +=1
+#     if small > big:
+#         return args.lower()
+#     elif small < big:
+#         return  args.upper()
+#     else:
+#         return args.lower()
+#
+#
+# print(convert('BEEgeek'))
+# print(convert('pyTHON'))
+# print(convert('pi31415!'))
+#----------------------------------------------------------------------------------------------------------------
+#Анаграммы — это слова, которые состоят из одинаковых букв. Например:
+#
+# адаптер — петарда
+# адресочек — середочка
+# азбука — базука
+# аистенок — осетинка
+# Реализуйте функцию filter_anagrams(), которая принимает два аргумента в следующем порядке:
+#
+# word — слово в нижнем регистре
+# words — список слов в нижнем регистре
+def filter_anagrams(*args):
+    res: list = []
+    word: str = sorted(args[0])
 
+    word_list: list = args[1]
+    for elem in args[1]:
+        if sorted(elem) == word:
+            res.append(elem)
+    return res
 
-print(convert('BEEgeek'))
-print(convert('pyTHON'))
-print(convert('pi31415!'))
+word = 'abba'
+anagrams = ['aabb', 'abcd', 'bbaa', 'dada']
+
+print(filter_anagrams(word, anagrams))
+
+print(filter_anagrams('отсечка', ['сеточка', 'стоечка', 'тесачок', 'чесотка']))
+
+print(filter_anagrams('стекло', []))
